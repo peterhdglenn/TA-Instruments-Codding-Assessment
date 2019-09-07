@@ -1,0 +1,13 @@
+<h1>Code Challenge Solution</h1>
+<br/>
+<p>Type a word below and click the <strong>Show Matching Words</strong> button to view a list of words that can be created using the letters in the word you provided.</p>
+<br/>
+<p><input #newWord (keyup.enter)="getMatchingWords(newWord.value)"/><button (click)="getMatchingWords(newWord.value)">Show Matching Words</button></p>
+<br />
+<div [hidden]="!matchingWords">
+  <p>Matching Words Count: <strong>{{matchingWords?.length}}</strong></p>
+  Matching Words:
+  <ul>
+    <li *ngFor="let word of matchingWords"><strong>{{word}}</strong></li>
+  </ul>
+</div>

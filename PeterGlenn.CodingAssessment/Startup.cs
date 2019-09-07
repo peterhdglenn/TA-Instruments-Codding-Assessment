@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PeterGlenn.CodingAssessment.Repositories;
+using PeterGlenn.CodingAssessment.Application;
 
 namespace PeterGlenn.CodingAssessment
 {
@@ -20,6 +22,9 @@ namespace PeterGlenn.CodingAssessment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IWordsApplication, WordsApplication>();
+            services.AddScoped<IWordsRepository, WordsRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
