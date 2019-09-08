@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\words-scrabble\words-scrabble.component.ts" />
     <None Remove="ClientApp\src\app\words\words.component.ts" />
     <None Remove="Resources\sowpods.txt" />
   </ItemGroup>
@@ -37,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\words-scrabble\words-scrabble.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\words\words.component.ts" />
   </ItemGroup>
 

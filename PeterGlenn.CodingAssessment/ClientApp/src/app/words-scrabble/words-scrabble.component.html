@@ -1,0 +1,14 @@
+<h1>Bonus - Scrabble Values</h1>
+<br/>
+<p>Type in your scrabble letters and the letter you are building on then click the <strong>Show Scrabble Words</strong> button to view a list of words that can be created using the letters you provided.</p>
+<p><strong>Bonus: </strong>The results list now includes the scrabble value for each word!</p>
+<br/>
+<p><input #letters (keyup.enter)="getScrabbleWords(letters.value)"/><button (click)="getScrabbleWords(letters.value)">Show Scrabble Words</button></p>
+<br />
+<div [hidden]="!scrabbleWords">
+  <p>Matching Words Count: <strong>{{scrabbleWords?.length}}</strong></p>
+  Scrabble Words:
+  <ul>
+    <li *ngFor="let word of scrabbleWords"><strong>{{word}}</strong></li>
+  </ul>
+</div>

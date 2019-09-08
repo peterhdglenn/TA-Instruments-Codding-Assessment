@@ -18,7 +18,7 @@ export class WordsComponent {
 
   getMatchingWords(word: string) {
     this.matchingWords = null;
-    this.http.get<string[]>(this.baseUrl + 'api/Words/MatchingWordsWithScrabbleValues/' + word).subscribe(result => {
+    this.http.get<string[]>(this.baseUrl + 'api/Words/MatchingWords/' + word).subscribe(result => {
       this.matchingWords = result;
     }, error => console.error(error));
   }

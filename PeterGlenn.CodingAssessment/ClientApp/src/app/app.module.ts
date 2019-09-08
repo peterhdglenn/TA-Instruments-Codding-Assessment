@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { WordsComponent } from './words/words.component';
+import { WordsScrabbleComponent } from './words-scrabble/words-scrabble.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { WordsComponent } from './words/words.component';
     NavMenuComponent,
     HomeComponent,
     InstructionsComponent,
-    WordsComponent
+    WordsComponent,
+    WordsScrabbleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,7 @@ import { WordsComponent } from './words/words.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'instructions', component: InstructionsComponent },
       { path: 'words', component: WordsComponent },
+      { path: 'words-scrabble', component: WordsScrabbleComponent },
     ])
   ],
   providers: [],

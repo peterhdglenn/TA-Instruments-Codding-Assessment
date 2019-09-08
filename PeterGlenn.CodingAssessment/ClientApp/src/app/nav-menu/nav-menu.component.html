@@ -1,12 +1,13 @@
 <div class='main-nav'>
     <div class='navbar navbar-inverse'>
         <div class='navbar-header'>
-            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
-                <span class='sr-only'>Toggle navigation</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </button>
+          <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
             <a class='navbar-brand' [routerLink]='["/"]'>Peter Glenn</a>
         </div>
         <div class='clearfix'></div>
@@ -25,6 +26,11 @@
             <li [routerLinkActive]='["link-active"]'>
               <a [routerLink]='["/words"]' (click)='collapse()'>
                 <span class='glyphicon glyphicon-search'></span> Solution
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/words-scrabble"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-heart'></span> Bonus
               </a>
             </li>
           </ul>
