@@ -9,24 +9,33 @@ namespace PeterGlenn.CodingAssessment.Application
     public interface IWordsApplication
     {
         List<string> GetMatchingWords(string word);
+        List<string> GetMatchingWords(string word, bool withScrabbleValues);
     }
     public class WordsApplication : IWordsApplication
     {
+        private readonly int[] _letterValues;
+        private List<string> _wordsList;
+
         private IWordsRepository _wordsRepository;
         public WordsApplication(IWordsRepository repository)
         {
             _wordsRepository = (repository != null) ? repository : throw new ArgumentNullException("Unable to instantiate WordsRepository becuase the provided WordsRepository is null.");
-
+            _letterValues = _wordsRepository.GetScrabbleValues();
         }
 
         public List<string> GetMatchingWords(string word)
+        {
+            return GetMatchingWords(word, true);
+        }
+
+        public List<string> GetMatchingWords(string word, bool withScrabbleValues)
         {
             //don't wast time if the input word is null
             if (string.IsNullOrEmpty(word))
                 return new List<string>();
 
-            var wordsList = GetAllWords();
-            var matchingWords = CheckForMatchingWordsInWordsList(wordsList, word);
+            _wordsList = _wordsList ?? GetAllWords();
+            var matchingWords = CheckForMatchingWordsInWordsList(_wordsList, word, withScrabbleValues);
             return matchingWords ?? new List<string>();
         }
 
@@ -42,7 +51,7 @@ namespace PeterGlenn.CodingAssessment.Application
             return allTheWords.ToList();
         }
 
-        private List<String> CheckForMatchingWordsInWordsList(List<string> wordsList, string inputWord)
+        private List<String> CheckForMatchingWordsInWordsList(List<string> wordsList, string inputWord, bool withScrabbleValues)
         {
             //count the occurence of each letter availble it the input word
             var availableLettersCount = CountAvailableLetterOccurences(inputWord);
@@ -51,6 +60,7 @@ namespace PeterGlenn.CodingAssessment.Application
             List<String> result = new List<string>();
             foreach (string word in wordsList)
             {
+                int wordValue = 0;
                 int[] letterCount = new int[26];
                 bool ok = true;
                 foreach (char c in word.ToUpper())
@@ -58,6 +68,7 @@ namespace PeterGlenn.CodingAssessment.Application
                     if (Char.IsLetter(c))
                     {
                         int index = c - 'A';
+                        wordValue = wordValue + _letterValues[index];
                         letterCount[index]++;
                         //if a word contains more occurence than the input word than is is not a valid word
                         if (letterCount[index] > availableLettersCount[index])
@@ -70,7 +81,8 @@ namespace PeterGlenn.CodingAssessment.Application
                 //add valid words to the results list
                 if (ok)
                 {
-                    result.Add(word);
+                    var matchingWord = (withScrabbleValues) ? word + " - " + wordValue : word;
+                    result.Add(matchingWord);
                 }
             }
             return result;
