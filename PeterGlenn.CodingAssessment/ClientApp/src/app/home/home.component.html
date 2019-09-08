@@ -1,24 +1,30 @@
 <h1>TA Instruments Code Challenge</h1>
 <h4><u>Summary</u></h4>
 <p>This is Peter Glenn's solution for the TA Instruments Code Challenge.  The backend is written using .NET Core.  The frontend is written using Angular.</p>
-<p>There are three pages in the UI:</p>
+<p>There are four pages in the UI:</p>
 <ul>
   <li><strong>Home:</strong> Contains a summary of the solution and the various source files created.</li>
   <li><strong>Instructions:</strong> Contains the Code Challenge instructions that were used as the requirements for the implmented solution.</li>
   <li><strong>Solution:</strong> Contains the working solution based on the provided instructions.</li>
+  <li><strong>Bonus:</strong> A modified version of the solution that calculates the Scrabble value for each word in the results list.</li>
 </ul>
 <br />
 <h4><u>Source Code</u></h4>
 <p>The source code can be accessed two ways:</p>
 <ul>
   <li><strong><a href="https://github.com/peterhdglenn/TA-Instruments-Codding-Assessment">GitHub Repository</a></strong> - The source code is hosted in a public GitHub Repository.</li>
+  <ul>
+    <li><strong>master: </strong> Contains the source code without the Bonus functionality.</li>
+    <li><strong>branch (Bonus-ScrabbleValues): </strong> Contains the source code with the Bonus Scrabble functionality.</li>
+  </ul>
   <li><strong><a href="https://drive.google.com/open?id=1LdaBpZJuTBQDm6pQAqBlYXsTuT2M7C2y">Google Drive Zip File</a></strong> - A zip file containing the source code can be downloaded from the shared Google Drive folder.</li>
 </ul>
 <br />
 <h4><u>Hosting</u></h4>
-<p>The website is hosted in my Azure account and can be reached via the URL below:</p>
+<p>The website is hosted in my Azure account and can be reached via the URLs below:</p>
 <ul>
-  <li><a href="https://peterglenncodingassessment-scrabblebonus.azurewebsites.net">https://peterglenncodingassessment-scrabblebonus.azurewebsites.net</a></li>
+  <li><strong>master: </strong> <a href="https://peterglenncodingassessment20190907112933.azurewebsites.net">https://peterglenncodingassessment20190907112933.azurewebsites.net</a></li>
+  <li><strong>branch (Bonus-ScrabbleValues): </strong> <a href="https://peterglenncodingassessment-scrabblebonus.azurewebsites.net">https://peterglenncodingassessment-scrabblebonus.azurewebsites.net</a></li>
 </ul>
 <br />
 <h4><u>Source Files</u></h4>
@@ -29,9 +35,10 @@
   <li><strong>\ClientApp\src\app\home</strong> - Contains the simple HTML and TypeScript files for the <strong>Home</strong> page.</li>
   <li><strong>\ClientApp\src\app\instructions</strong> - Contains the simple HTML and TypeScript files for the <strong>Instructions</strong> page.</li>
   <li><strong>\ClientApp\src\app\words</strong> - Contains the HTML and TypeScript files for the <strong>Solution</strong> page.  This is the actual coding challenge solution UI.</li>
-  <li><strong>\Controller\WordsController.cs</strong> - The controller that exposes the backend endpoint api/words/matchingwords.  This is the api endpiont the UI calls when it wants to get the list of matching words.</li>
+  <li><strong>\ClientApp\src\app\words-scrabble</strong> - Contains the HTML and TypeScript files for the <strong>Bonus</strong> page.  Only present in the Bonus-ScrabbleVaues branch.</li>
+  <li><strong>\Controller\WordsController.cs</strong> - The controller that exposes the backend endpoints for retrieving the matching words.  These are the api endpiont the UI calls when it wants to get the list of matching words.</li>
   <li><strong>\Application\WordsApplication.cs</strong> - This is the main "Business Logic" class that contains the logic/algorithms for finding all the matcing words using the letters provided.</li>
-  <li><strong>\Repositories\WordsRepositories.cs</strong> - This class reads the sowpods.txt file and provides the word list to the application.</li>
+  <li><strong>\Repositories\WordsRepositories.cs</strong> - This class reads the sowpods.txt file and provides the word list to the application.  Also provides the Scrabble letter values in the Bonus-ScrabbleValues branch.</li>
   <li><strong>\Resources\sowpods.txt</strong> - The provided word list to be used in the code challenge.</li>
 </ul>
 <p><strong>Added Files - PeterGlenn.CodingAssessment.UnitTests</strong></p>
@@ -41,7 +48,7 @@
 </ul>
 <p><strong>Modified Files - PeterGlenn.CodingAssessment</strong></p>
 <ul>
-  <li><strong>\ClientApp\src\app\nav-menu</strong> - Changes to navication menu to add the <strong>Instructions</strong> and <strong>Solution</strong> menu options.</li>
-  <li><strong>\ClientApp\src\app\app.module.ts</strong> - Changes to register the instructions and solution components to the angular application.</li>
+  <li><strong>\ClientApp\src\app\nav-menu</strong> - Changes to navigation menu to add the menu options.</li>
+  <li><strong>\ClientApp\src\app\app.module.ts</strong> - Changes to register the new angular components to the angular application.</li>
   <li><strong>Startup.cs</strong> - Register the WordsController and WordsApplication in the IoC Container to support a testable code base.</li>
 </ul>
