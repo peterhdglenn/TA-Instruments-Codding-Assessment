@@ -18,6 +18,11 @@
               </a>
             </li>
             <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/instructions"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-info-sign'></span> Instructions
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
               <a [routerLink]='["/words"]' (click)='collapse()'>
                 <span class='glyphicon glyphicon-search'></span> Solution
               </a>

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
+import { InstructionsComponent } from './instructions/instructions.component';
 import { WordsComponent } from './words/words.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { WordsComponent } from './words/words.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
+    InstructionsComponent,
     WordsComponent
   ],
   imports: [
@@ -22,6 +24,7 @@ import { WordsComponent } from './words/words.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'instructions', component: InstructionsComponent },
       { path: 'words', component: WordsComponent },
     ])
   ],

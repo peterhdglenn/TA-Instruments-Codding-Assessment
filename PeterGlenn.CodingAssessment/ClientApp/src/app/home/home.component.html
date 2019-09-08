@@ -1,17 +1,45 @@
-<h1>Code Challenge Instructions</h1>
-<p>Your task is to write a C# web app using Visual Studio that would help in playing word games. The application should include a UI that allows users to type in letters and then display the count and the list of English words that can be made from those letters by referencing the supplied word list. An installer program is not required, it is sufficient to be able to run from within Visual Studio.</p>
-<p>Example:</p>
-<p>User types in:</p>
-<p><strong>THE</strong></p>
-<p>Program displays:</p>
-<p><strong>7</strong></p>
-<br/>
-<p><strong>ET</strong></p>
-<p><strong>TE</strong></p>
-<p><strong>EH</strong></p>
-<p><strong>HE</strong></p>
-<p><strong>HET</strong></p>
-<p><strong>ETH</strong></p>
-<p><strong>THE</strong></p>
-<p>(order of words is not important).</p>
-<p>Each letter may not be used more than the number of times it appears in the entered letters. For instance, if <strong>ID</strong> is entered the program should not find <strong>DID</strong>, but if <strong>DID</strong> is entered then <strong>DID</strong> is clearly permissible.</p>
+<h1>TA Instruments Code Challenge</h1>
+<h4><u>Summary</u></h4>
+<p>This is Peter Glenn's solution for the TA Instruments Code Challenge.  The backend is written using .NET Core.  The frontend is written using Angular.  There are three main pages to the UI:</p>
+<ul>
+  <li><strong>Home:</strong> Contains a summary of the solution and the various source files created.</li>
+  <li><strong>Instructions:</strong> Contains the Code Challenge instructiosn that were used as the requirements for the implmented solution.</li>
+  <li><strong>Solution:</strong> Contains the working solution based on the provided instructions.</li>
+</ul>
+<br />
+<h4><u>Hosting</u></h4>
+<p>The full website is hosted in my Azure account and can be reached via the URL below:</p>
+<ul>
+  <li><a href="https://peterglenncodingassessment20190907112933.azurewebsites.net">https://peterglenncodingassessment20190907112933.azurewebsites.net</a></li>
+</ul>
+<br />
+<h4><u>Source Code</u></h4>
+<p>In addition to the provided .zip file, the source code for this solution can be accesses via a public GitHub repository.  The URL for the GitHub repository page is below:</p>
+<ul>
+  <li><a href="https://github.com/peterhdglenn/TA-Instruments-Codding-Assessment">https://github.com/peterhdglenn/TA-Instruments-Codding-Assessment</a></li>
+</ul>
+<br />
+<h4><u>Source Files</u></h4>
+<p>There are two projects in the solution.  <strong>PeterGlenn.CodingAssessment</strong> contians all the frontend and backend functionality.  <strong>PeterGlenn.CodingAssessment.UnitTests</strong> contains the unit tests for the backend functionality.</p>
+<p>The majority of the files in the solution were added by the Visual Studio template for a .NET Core Angular app.  Below is a list of the files that I added for this solution as well as a list of the existing files that I modified for this solution.</p>
+<p><strong>Added Files - PeterGlenn.CodingAssessment</strong></p>
+<ul>
+  <li><strong>\ClientApp\src\app\home</strong> - Contains the simple html and type script files for the <strong>Home</strong> page.</li>
+  <li><strong>\ClientApp\src\app\instructions</strong> - Contains the simple html and type script files for the <strong>Instructions</strong> page.</li>
+  <li><strong>\ClientApp\src\app\words</strong> - Contains the html and type script files for the <strong>Solution</strong> page.  This is the actual coding challenge solution UI.</li>
+  <li><strong>\Controller\WordsController.cs</strong> - The controller that exposes the backend endpoint api/words/matchingwords.  This is the api endpiont the UI calls when it wants to get the list of matching words.</li>
+  <li><strong>\Application\WordsApplication.cs</strong> - This is the main "Business Logic" class that contains the logic/algorithms for finding all the matcing words using the letters provided.</li>
+  <li><strong>\Repositories\WordsRepositories.cs</strong> - This class reads the sowpods.txt file and provides the word list to the application.</li>
+  <li><strong>\Resources\sowpods.txt</strong> - The provided word list to be used in the code challenge.</li>
+</ul>
+<p><strong>Added Files - PeterGlenn.CodingAssessment.UnitTests</strong></p>
+<ul>
+  <li><strong>WordsControllerTests.cs</strong> - Units tests for the WordsController class.  All tests pass.</li>
+  <li><strong>WordsApplicationTests.cs</strong> - Units tests for the WordsApplication class.  All tests pass.</li>
+</ul>
+<p><strong>Modified Files - PeterGlenn.CodingAssessment</strong></p>
+<ul>
+  <li><strong>\ClientApp\src\app\nav-menu</strong> - Changes to navication menu to add the <strong>Instructions</strong> and <strong>Solution</strong> menu options.</li>
+  <li><strong>\ClientApp\src\app\app.module.ts</strong> - Changes to register the instructions and solution components to the angular application.</li>
+  <li><strong>Startup.cs</strong> - Register the WordsController and WordsApplication in the IoC Container to support a testable code base.</li>
+</ul>
