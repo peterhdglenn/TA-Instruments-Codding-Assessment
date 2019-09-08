@@ -46,5 +46,28 @@ namespace PeterGlenn.CodingAssessment.Controllers
             }
             return results;
         }
+
+
+        [HttpGet("[action]/{word}")]
+        public List<string> MatchingWordsWithScrabbleValues(string word)
+        {
+            //don't waste time if the input word is null
+            if (string.IsNullOrEmpty(word))
+                return new List<string>();
+
+            var results = new List<string>();
+            try
+            {
+                //send the requst thru to the Application layer
+                results = _wordsApplication.GetMatchingWords(word, true);
+            }
+            catch (Exception ex)
+            {
+                //here is where I would log the exception and translate the exception into a warm and fuzzy messqage for the user.
+                //for the sake of this excercise I am just going to re-throw the system exception.
+                throw new ApplicationException("Controller - " + ex.Message);
+            }
+            return results;
+        }
     }
 }

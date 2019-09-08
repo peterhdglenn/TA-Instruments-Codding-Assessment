@@ -6,7 +6,6 @@ namespace PeterGlenn.CodingAssessment.Repositories
     public interface IWordsRepository
     {
         IList<string> GetWordsList();
-        int[] GetScrabbleValues();
     }
 
     public class WordsRepository : IWordsRepository
@@ -24,8 +23,8 @@ namespace PeterGlenn.CodingAssessment.Repositories
             return _wordsList;
         }
 
-        private int[] _scrabbleValues;
-        public int[] GetScrabbleValues()
+        private static int[] _scrabbleValues;
+        public static int[] GetScrabbleValues()
         {
             if (_scrabbleValues == null)
             {

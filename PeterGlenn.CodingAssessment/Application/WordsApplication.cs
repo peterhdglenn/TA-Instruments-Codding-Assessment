@@ -20,12 +20,12 @@ namespace PeterGlenn.CodingAssessment.Application
         public WordsApplication(IWordsRepository repository)
         {
             _wordsRepository = (repository != null) ? repository : throw new ArgumentNullException("Unable to instantiate WordsRepository becuase the provided WordsRepository is null.");
-            _letterValues = _wordsRepository.GetScrabbleValues();
+            _letterValues = WordsRepository.GetScrabbleValues();
         }
 
         public List<string> GetMatchingWords(string word)
         {
-            return GetMatchingWords(word, true);
+            return GetMatchingWords(word, false);
         }
 
         public List<string> GetMatchingWords(string word, bool withScrabbleValues)
@@ -57,7 +57,7 @@ namespace PeterGlenn.CodingAssessment.Application
             var availableLettersCount = CountAvailableLetterOccurences(inputWord);
 
             //for each word in the Word List count the occurence of each letter 
-            List<String> result = new List<string>();
+            List<KeyValuePair<string, int>> result = new List<KeyValuePair<string, int>>();
             foreach (string word in wordsList)
             {
                 int wordValue = 0;
@@ -81,11 +81,10 @@ namespace PeterGlenn.CodingAssessment.Application
                 //add valid words to the results list
                 if (ok)
                 {
-                    var matchingWord = (withScrabbleValues) ? word + " - " + wordValue : word;
-                    result.Add(matchingWord);
+                    result.Add(new KeyValuePair<string, int>(word, wordValue));
                 }
             }
-            return result;
+            return (withScrabbleValues) ? result.OrderByDescending(x => x.Value).Select(y => y.Key + " - " + y.Value).ToList() : result.Select(x => x.Key).ToList();
         }
 
         private int[] CountAvailableLetterOccurences(string word)
