@@ -4,7 +4,7 @@
 <p>There are three pages in the UI:</p>
 <ul>
   <li><strong>Home:</strong> Contains a summary of the solution and the various source files created.</li>
-  <li><strong>Instructions:</strong> Contains the Code Challenge instructions that were used as the requirements for the implmented solution.</li>
+  <li><strong>Instructions:</strong> Contains the Code Challenge instructions that were used as the requirements for the implemented solution.</li>
   <li><strong>Solution:</strong> Contains the working solution based on the provided instructions.</li>
 </ul>
 <br />
@@ -22,15 +22,15 @@
 </ul>
 <br />
 <h4><u>Source Files</u></h4>
-<p>There are two projects in the solution.  <strong>PeterGlenn.CodingAssessment</strong> contians all the frontend and backend functionality.  <strong>PeterGlenn.CodingAssessment.UnitTests</strong> contains the unit tests for the backend functionality.</p>
+<p>There are two projects in the solution.  <strong>PeterGlenn.CodingAssessment</strong> contains all the frontend and backend functionality.  <strong>PeterGlenn.CodingAssessment.UnitTests</strong> contains the unit tests for the backend functionality.</p>
 <p>The majority of the files in the solution were added by the Visual Studio template for a .NET Core Angular app.  Below is a list of the files that I added for this solution as well as a list of the existing files that I modified.</p>
 <p><strong>Added Files - PeterGlenn.CodingAssessment</strong></p>
 <ul>
   <li><strong>\ClientApp\src\app\home</strong> - Contains the simple HTML and TypeScript files for the <strong>Home</strong> page.</li>
   <li><strong>\ClientApp\src\app\instructions</strong> - Contains the simple HTML and TypeScript files for the <strong>Instructions</strong> page.</li>
   <li><strong>\ClientApp\src\app\words</strong> - Contains the HTML and TypeScript files for the <strong>Solution</strong> page.  This is the actual coding challenge solution UI.</li>
-  <li><strong>\Controller\WordsController.cs</strong> - The controller that exposes the backend endpoint api/words/matchingwords.  This is the api endpiont the UI calls when it wants to get the list of matching words.</li>
-  <li><strong>\Application\WordsApplication.cs</strong> - This is the main "Business Logic" class that contains the logic/algorithms for finding all the matcing words using the letters provided.</li>
+  <li><strong>\Controller\WordsController.cs</strong> - The controller that exposes the backend endpoint api/words/matchingwords.  This is the api endpoint the UI calls when it wants to get the list of matching words.</li>
+  <li><strong>\Application\WordsApplication.cs</strong> - This is the main "Business Logic" class that contains the logic/algorithms for finding all the matching words using the letters provided.</li>
   <li><strong>\Repositories\WordsRepositories.cs</strong> - This class reads the sowpods.txt file and provides the word list to the application.</li>
   <li><strong>\Resources\sowpods.txt</strong> - The provided word list to be used in the code challenge.</li>
 </ul>
@@ -41,7 +41,7 @@
 </ul>
 <p><strong>Modified Files - PeterGlenn.CodingAssessment</strong></p>
 <ul>
-  <li><strong>\ClientApp\src\app\nav-menu</strong> - Changes to navication menu to add the <strong>Instructions</strong> and <strong>Solution</strong> menu options.</li>
+  <li><strong>\ClientApp\src\app\nav-menu</strong> - Changes to navigation menu to add the <strong>Instructions</strong> and <strong>Solution</strong> menu options.</li>
   <li><strong>\ClientApp\src\app\app.module.ts</strong> - Changes to register the instructions and solution components to the angular application.</li>
   <li><strong>Startup.cs</strong> - Register the WordsController and WordsApplication in the IoC Container to support a testable code base.</li>
 </ul>
